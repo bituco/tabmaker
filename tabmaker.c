@@ -30,12 +30,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ncurses.h>
+#include <curses.h>
 
 int main(void)
 {
     int key,i,j;
-    WINDOW *janela;
     
     initscr();
     start_color();
@@ -43,9 +42,16 @@ int main(void)
     init_pair(2,COLOR_BLUE,COLOR_WHITE);
     init_pair(3,COLOR_RED,COLOR_WHITE); 
 
-    for(i=0;i<6;i==)
+    attron(COLOR_PAIR(3));
+    mvprintw(10,18,"e ");
+    mvprintw(11,18,"B ");
+    mvprintw(12,18,"G ");
+    mvprintw(13,18,"D ");
+    mvprintw(14,18,"A ");
+    mvprintw(15,18,"E ");
+    for(i=0;i<6;i++)
         for(j=0;j<24;j++)
-            mvpwrintw(i+10,j+20;"-");
+            mvprintw(i+10,j*3+20," %d ",j);
     key=getch();
     if(key==KEY_ENTER)
     {
